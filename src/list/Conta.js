@@ -4,16 +4,14 @@ import axios from "axios";
 
 export default class Conta extends React.Component {
   state = {
-    transferencias: [],
+    contas: [],
   };
 
   componentDidMount() {
-    axios
-      .get("http://localhost:9090/transferencia/list/all/dataTransfer")
-      .then((res) => {
-        const transferencias = res.data;
-        this.setState({ transferencias });
-      });
+    axios.get("http://localhost:9090/conta/list/all/contas").then((res) => {
+      const contas = res.data;
+      this.setState({ contas });
+    });
   }
   render() {
     return (
@@ -21,14 +19,12 @@ export default class Conta extends React.Component {
         <table>
           <tr>
             <th>Id</th>
-            <th>Valor</th>
-            <th>data_TRANSFERENCIA</th>
+            <th>Nome Responsável</th>
           </tr>
-          {this.state.transferencias.map((transferencia) => (
+          {this.state.contas.map((conta) => (
             <tr>
-              <td>{transferencia.id}</td>
-              <td>{transferencia.valor}</td>
-              <td>{transferencia.data_TRANSFERENCIA}</td>
+              <td>{conta.id_CONTA}</td>
+              <td>{conta.nome_RESPONSAVEL}</td>
             </tr>
           ))}
         </table>
