@@ -4,14 +4,16 @@ import axios from "axios";
 
 export default class Conta extends React.Component {
   state = {
-    conta: [],
+    transferencias: [],
   };
 
   componentDidMount() {
-    axios.get("http://localhost:9090/ssd/list").then((res) => {
-      const contas = res.data;
-      this.setState({ contas });
-    });
+    axios
+      .get("http://localhost:9090/transferencia/list/all/dataTransfer")
+      .then((res) => {
+        const transferencias = res.data;
+        this.setState({ transferencias });
+      });
   }
   render() {
     return (
@@ -19,40 +21,16 @@ export default class Conta extends React.Component {
         <table>
           <tr>
             <th>Id</th>
-            <th>Marca</th>
-            <th>Modelo</th>
-            <th>Nº de série</th>
-            <th>Capacidade</th>
-            <th>Data de compra</th>
-            <th>Preço de compra</th>
-            <th>Data de venda</th>
-            <th>Preço de venda</th>
-            <th>Categoria do produto</th>
-            <th>Url</th>
-            <th></th>
+            <th>Valor</th>
+            <th>data_TRANSFERENCIA</th>
           </tr>
-          {this.state.contas.map((conta) => (
+          {this.state.transferencias.map((transferencia) => (
             <tr>
-              <td>{conta.id}</td>
-              <td>{conta.brand}</td>
-              <td>{conta.model}</td>
-              <td>{conta.serialNumber}</td>
-              <td>{conta.size}</td>
-              <td>{conta.purchaseDate}</td>
-              <td>{conta.purchasePrice}</td>
-              <td>{conta.arrivalDate}</td>
-              <td>{conta.saleValue}</td>
-              <td>{conta.productCategory}</td>
-              <td>
-                <a href={conta.url}>url</a>
-              </td>
+              <td>{transferencia.id}</td>
+              <td>{transferencia.valor}</td>
+              <td>{transferencia.data_TRANSFERENCIA}</td>
             </tr>
           ))}
-          {/* {this.state.categories.map((cate) => (
-            <tr>
-              <td>{cate.productCategory}</td>
-            </tr>
-          ))} */}
         </table>
       </tbody>
     );
