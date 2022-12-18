@@ -1,4 +1,3 @@
-
 import React from "react";
 import axios from "axios";
 // import "./SsdList.css";
@@ -47,9 +46,6 @@ export default class Conta extends React.Component {
               <td>
                 <a href={conta.url}>url</a>
               </td>
-
-              <td>Alterar</td>
-              <td>Excluir</td>
             </tr>
           ))}
           {/* {this.state.categories.map((cate) => (
