@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-// import "./SsdList.css";
 
 export default class Conta extends React.Component {
   state = {
@@ -25,6 +24,7 @@ export default class Conta extends React.Component {
             <th>Valor</th>
             <th>data_TRANSFERENCIA</th>
             <th>Tipo</th>
+            <th>Nome operador</th>
           </tr>
           {this.state.transferencias.map((transferencia) => (
             <tr>
@@ -33,6 +33,7 @@ export default class Conta extends React.Component {
               <td>{transferencia.valor}</td>
               <td>{transferencia.data_TRANSFERENCIA}</td>
               <td>{transferencia.tipo}</td>
+              <td>{transferencia.nome_OPERADOR_TRANSACAO}</td>
             </tr>
           ))}
         </table>

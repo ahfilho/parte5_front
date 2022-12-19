@@ -6,7 +6,7 @@ export default class Conta extends React.Component {
   state = {
     contas: [],
   };
-
+  
   componentDidMount() {
     axios.get("http://localhost:9090/conta/list/all/contas").then((res) => {
       const contas = res.data;
